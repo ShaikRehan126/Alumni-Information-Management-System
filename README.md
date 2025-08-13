@@ -22,6 +22,8 @@ The system provides role-based access for **Admin** and **Director** to manage a
 ---
 
 ## 📸 Screenshots
+>Login.png
+><img width="1082" height="801" alt="image" src="https://github.com/user-attachments/assets/f815d4e5-0528-48d4-b555-c1dc5b18dbb2" />
 > Dashboard.png
 > <img width="1892" height="926" alt="image" src="https://github.com/user-attachments/assets/de756062-6ddf-4c67-9839-4b68dc564e84" />
 >View Student
