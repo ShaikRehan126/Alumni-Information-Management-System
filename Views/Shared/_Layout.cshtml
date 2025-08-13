@@ -1,0 +1,218 @@
+@* <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyMVCMappingDEMO</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MyMVCMappingDEMO.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/png" href="/Fevicon.png" />
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="80"
+             height="80"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="#ffffff"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="pinwheel">
+            <g>
+                <path d="M22 12a1 1 0 0 1-10 0 1 1 0 0 0-10 0" />
+                <path d="M7 20.7a1 1 0 1 1 5-8.7 1 1 0 1 0 5-8.6" />
+                <path d="M7 3.3a1 1 0 1 1 5 8.6 1 1 0 1 0 5 8.6" />
+                <circle cx="12" cy="12" r="10" />
+            </g>
+        </svg>
+    </div>
+
+    
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="MechEmp" asp-action="Index">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                @* <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MechEmp" asp-action="ViewEmp">View Employees</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MechEmp" asp-action="AddEmp">Add New Employee</a>
+                        </li>
+                        
+                    </ul>
+                   
+                </div> *@
+                @* <div class="d-flex align-items-center ms-auto">
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        <span class="navbar-text me-3">Welcome, <strong>@User.Identity.Name</strong></span>
+                    } *@
+                    @* else
+                    {
+                        <span class="navbar-text me-3">Welcome, <strong>Guest</strong></span>
+                    } *@
+@*                 </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - Shaik Rehan
+                    </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        const preloader = document.getElementById("preloader");
+
+        // Fade out on page load
+        window.addEventListener("load", () => {
+          preloader.style.opacity = "0";
+          setTimeout(() => preloader.style.display = "none", 300);
+        });
+
+        // Fade in on internal navigation
+        document.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", function (e) {
+            // Only for internal links, not anchors or external
+            if (this.hostname === window.location.hostname && this.getAttribute("href").charAt(0) !== "#") {
+              e.preventDefault(); // Stop default navigation
+              preloader.style.display = "flex";
+              setTimeout(() => {
+                preloader.style.opacity = "1";
+              }, 10);
+
+              // Navigate after fade-in starts
+              setTimeout(() => {
+                window.location.href = this.href;
+              }, 500);
+            }
+          });
+        });
+    </script>
+
+
+</body>
+</html> *@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyMVCMappingDEMO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="icon" type="image/png" href="/Fevicon.png" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f6f8fa;
+        }
+
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.9);
+            transition: opacity 0.3s;
+        }
+
+        .spinner {
+            width: 64px;
+            height: 64px;
+            border: 6px solid #e0e0e0;
+            border-top: 6px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="preloader"><div class="spinner"></div></div>
+    @if (User.Identity?.IsAuthenticated ?? false){
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <!-- Home link aligned to the left -->
+                <a class="navbar-brand fw-bold text-primary" asp-area="" asp-controller="MechEmp" asp-action="Index">Home</a>
+                
+                <!-- Toggler for mobile view -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- Navbar content -->
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <!-- Push everything else to the right -->
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" asp-controller="MechEmp" asp-action="ViewEmp">Alumni Data</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="MechEmp" asp-action="AddEmp">Add Alumni</a></li>
+                        
+                        @if (User.Identity?.IsAuthenticated ?? false)
+                        {
+                            <li class="nav-item">
+                                <span class="nav-link text-success">Welcome, <strong>@User.Identity.Name</strong></span>
+                            </li>
+                            <li class="nav-item">
+                                <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    }
+    <main class="container py-4">
+        @RenderBody()
+    </main>
+    <footer class="border-top footer text-muted fixed-bottom bg-light text-white p-3">
+        <div class="container text-center text-muted small">
+            &copy; 2025 - Alumni Information Management System
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const preloader = document.getElementById("preloader");
+        window.addEventListener("load", () => {
+            preloader.style.opacity = "0";
+            setTimeout(() => preloader.style.display = "none", 300);
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

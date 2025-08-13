@@ -1,0 +1,105 @@
+@* @model List<MyMVCMappingDEMO.Models.MechEmployee>
+@{
+    ViewData["Title"] = "Index";
+    var username = User.Identity.IsAuthenticated ? User.Identity.Name : "Guest";
+}
+
+<div class="text-center">
+    
+    <h1 class="display-4">
+        Welcome, <strong>@username</strong>
+    </h1>
+    <p>
+        <a class="btn btn-primary" asp-area="" asp-controller="MechEmp" asp-action="ViewEmp">View Employees</a>
+        <a class="btn btn-secondary" asp-area="" asp-controller="MechEmp" asp-action="AddEmp">Add New Employee</a>
+      </p>
+  </div> *@
+@{
+    ViewData["Title"] = "Alumni Dashboard";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2 class="fw-bold">Alumni Dashboard</h2>
+        <div>
+            <a class="btn btn-primary me-2" asp-action="AddEmp">Add New Student</a>
+            @* <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="d-inline">
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form> *@
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 text-center">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">Total Student</h6>
+                    <h3 class="fw-bold text-primary">@ViewBag.TotalEmployees</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 text-center">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">Departments</h6>
+                    <h3 class="fw-bold text-success">@ViewBag.TotalDepartments</h3>
+                </div>
+            </div>
+        </div>
+        @* <div class="col-md-3">
+            <div class="card shadow-sm border-0 text-center">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">Designations</h6>
+                    <h3 class="fw-bold text-info">@ViewBag.TotalDesignations</h3>
+                </div>
+            </div>
+        </div> *@
+        @* <div class="col-md-3">
+            <div class="card shadow-sm border-0 text-center">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">Avg. Salary</h6>
+                    <h3 class="fw-bold text-warning">@ViewBag.AvgSalary</h3>
+                </div>
+            </div>
+        </div> *@
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white fw-bold">Quick Links</div>
+                <div class="card-body">
+                    <a class="btn btn-outline-primary me-2 mb-2" asp-action="ViewEmp">View All Students</a>
+                    <a class="btn btn-outline-secondary me-2 mb-2" asp-action="AddEmp">Add Students</a>
+                    <a class="btn btn-outline-info mb-2" asp-controller="MechEmp" asp-action="Index">Home</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white fw-bold">Welcome</div>
+                <div class="card-body">
+                    <p class="mb-0">Manage your Alumni Data efficiently with this dashboard. Use the quick links to add, view, or edit Alumni details.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Departments != null && ((List<string>)ViewBag.Departments).Count > 0)
+    {
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-white fw-bold">Departments</div>
+            <div class="card-body">
+                <ul class="list-inline mb-0">
+                    @foreach (var dept in (List<string>)ViewBag.Departments)
+                    {
+                        <li class="list-inline-item mb-2">
+                            <span class="badge bg-warning text-dark px-3 py-2">@dept</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+</div>

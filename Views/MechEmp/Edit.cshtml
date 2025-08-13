@@ -1,0 +1,91 @@
+﻿@model MyMVCMappingDEMO.Models.MechEmployee
+@{
+    ViewData["Title"] = "Edit Student";
+}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow" style="width: 32rem;">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Edit Student</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit" asp-route-id="@Model.MId" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="MId" />
+                <div class="mb-3 text-center">
+                    @if (!string.IsNullOrEmpty(Model.ImagePath))
+                    {
+                        <img id="imgPreview" src="@Model.ImagePath" alt="Student Image" class="rounded-circle border mb-2" width="100" height="100" style="object-fit:cover;" />
+                    }
+                    else
+                    {
+                        <img id="imgPreview" src="#" alt="Image Preview" style="display:none; max-width:100px; max-height:100px; border-radius:50%; border:1px solid #ccc;" />
+                    }
+                    <input type="file" name="imageFile" class="form-control mt-2" id="imageFile" accept="image/*" onchange="previewImage(event)" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MRollNo" class="form-label">Roll Number</label>
+                    <input asp-for="MRollNo" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MName" class="form-label">Name</label>
+                    <input asp-for="MName" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MEmail" class="form-label">Email</label>
+                    <input asp-for="MEmail" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MPhone" class="form-label">Contact</label>
+                    <input asp-for="MPhone" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MDesignation" class="form-label">Designation</label>
+                    <input asp-for="MDesignation" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MDepartment" class="form-label">Department</label>
+                    <input asp-for="MDepartment" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MCompany" class="form-label">Company Working</label>
+                    <input asp-for="MCompany" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MYearPassed" class="form-label">Year Passed</label>
+                    <input type="number" asp-for="MYearPassed" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MAddress" class="form-label">Address</label>
+                    <input asp-for="MAddress" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MNotes" class="form-label">Note</label>
+                    <input asp-for="MNotes" class="form-control" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <a asp-action="ViewEmp" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function previewImage(event) {
+        const screenshot = document.getElementById('imgPreview');
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            screenshot.src = e.target.result;
+            screenshot.style.display = 'block';
+        };
+        
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            screenshot.src = '#';
+            screenshot.style.display = 'none';
+        }
+    }
+</script>

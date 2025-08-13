@@ -1,0 +1,97 @@
+﻿@model MyMVCMappingDEMO.Models.MechEmployee
+@{
+    ViewData["Title"] = "Add Student";
+}
+<div class="page-center">
+    <div class="card-main" style="max-width: 600px; width: 100%;">
+        <h2 class="card-title-main mb-4">Add New Student</h2>
+        <form asp-action="AddEmp" enctype="multipart/form-data" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="MRollNo" class="form-label">Roll Number</label>
+                    <input asp-for="MRollNo" class="form-control" required />
+                    <span asp-validation-for="MRollNo" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="MName" class="form-label">Name</label>
+                    <input asp-for="MName" class="form-control" required />
+                    <span asp-validation-for="MName" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="MEmail" class="form-label">Email</label>
+                    <input asp-for="MEmail" class="form-control" required />
+                    <span asp-validation-for="MEmail" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="MPhone" class="form-label">Phone</label>
+                    <input asp-for="MPhone" class="form-control" required />
+                    <span asp-validation-for="MPhone" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="MDesignation" class="form-label">Designation</label>
+                    <input asp-for="MDesignation" class="form-control" required />
+                    <span asp-validation-for="MDesignation" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="MDepartment" class="form-label">College Department</label>
+                    <input asp-for="MDepartment" class="form-control" required />
+                    <span asp-validation-for="MDepartment" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="MCompany" class="form-label">Company Working</label>
+                    <input asp-for="MCompany" class="form-control" required />
+                    <span asp-validation-for="MCompany" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="MYearPassed" class="form-label">Year Passed</label>
+                    <input type="number" asp-for="MYearPassed" class="form-control" required />
+                    <span asp-validation-for="MYearPassed" class="text-danger"></span>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label asp-for="MAddress" class="form-label">Address</label>
+                    <input asp-for="MAddress" class="form-control" required />
+                    <span asp-validation-for="MAddress" class="text-danger"></span>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label asp-for="MNotes" class="form-label">Note</label>
+                    <input asp-for="MNotes" class="form-control" required />
+                    <span asp-validation-for="MNotes" class="text-danger"></span>
+                </div>
+                <div class="col-md-12 mb-3 text-center">
+                    <label for="imageFile" class="form-label">Profile Image</label>
+                    <input type="file" name="imageFile" class="form-control" id="imageFile" accept="image/*" onchange="previewImage(event)" />
+                    <div class="mt-3">
+                        <img id="imgPreview" src="#" alt="Image Preview" style="display:none;" />
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn btn-primary px-4">Add Student</button>
+                <a asp-action="ViewEmp" class="btn btn-secondary px-4">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+function previewImage(event) {
+    const input = event.target;
+    const preview = document.getElementById('imgPreview');
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        }
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        preview.src = '#';
+        preview.style.display = 'none';
+    }
+}
+</script>
+<partial name="_ValidationScriptsPartial" />
+}
+
+

@@ -1,0 +1,215 @@
+/* Fullscreen preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px); /* Apple-like background blur */
+    background: rgba(0, 0, 0, 0.6); /* Slight transparency for elegance */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Spinning animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.pinwheel {
+    animation: spin 1s linear infinite;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f6f8fa 100%);
+    min-height: 100vh;
+}
+
+.page-center {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-main {
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+    background: #fff;
+    padding: 2rem;
+}
+
+.card-title-main {
+    font-weight: 700;
+    color: #007bff;
+    text-align: center;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #007bff;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #007bff 60%, #00c6ff 100%);
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
+}
+
+#imgPreview, .img-preview {
+    box-shadow: 0 2px 8px rgba(0,123,255,0.15);
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    max-width: 120px;
+    max-height: 120px;
+    display: block;
+    margin: 0 auto;
+}
+
+.card-shadow {
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    border-radius: 1rem;
+}
+
+input.form-control, select.form-select {
+    border-radius: 0.5rem;
+    border: 1px solid #e0e0e0;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/*@keyframes spin-360 {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+img.spin-hover-round {
+    display: inline-block;
+    width: 150px;*/ /* Adjust size */
+    /*height: 150px;
+    border-radius: 50%;*/ /* Makes the image circular */
+    /*object-fit: cover;*/ /* Keeps image inside circle without stretching */
+    /*transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+    img.spin-hover-round:hover {
+        animation: spin-360 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+    }*/
+
+@keyframes spin-3d {
+    0% {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+
+    25% {
+        transform: rotateY(90deg) rotateX(5deg);
+    }
+
+    50% {
+        transform: rotateY(180deg) rotateX(0deg);
+    }
+
+    75% {
+        transform: rotateY(270deg) rotateX(-5deg);
+    }
+
+    100% {
+        transform: rotateY(360deg) rotateX(0deg);
+    }
+}
+
+img.spin-hover-3d {
+    display: inline-block;
+    width: 150px; /* Adjust size */
+    height: 150px;
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures image fills the circle */
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    perspective: 1000px; /* Adds 3D depth */
+}
+
+    img.spin-hover-3d:hover {
+        animation: spin-3d 1.2s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+    }
+
+/* wwwroot/css/site.css */
+.card {
+    border-radius: 1rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+
+.btn-primary, .bg-primary {
+    background: linear-gradient(90deg, #007bff 60%, #00c6ff 100%);
+    border: none;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
+    }
+
+.table-hover tbody tr:hover {
+    background: #f0f8ff;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+footer {
+    background: #f6f8fa;
+    color: #888;
+    font-size: 0.95rem;
+    padding: 1rem 0;
+    border-top: 1px solid #e0e0e0;
+}   
