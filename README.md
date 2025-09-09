@@ -6,12 +6,14 @@ Supports **role-based access** for Admin and Director users.
 
 ---
 
-## 🚀 Features
+## ✨ Features  
+
 - 🔑 **Authentication & Authorization** – Admin & Director login  
 - 📋 **Alumni Data Management** – Add, edit, delete, search, filter, and sort alumni records  
+- 📂 **Excel Upload Support** – Upload Excel sheets (using ClosedXML) to bulk import alumni into the database  
+- 📧 **Email Notifications** – Send automated emails to alumni on event scheduling via **Google SMTP (Gmail)**  
 - 🗄️ **Database Integration** – Code-first EF Core with SQL Server  
-- 📂 **File Upload Support** – Upload alumni profile pictures/documents  
-- 📊 **User-friendly UI** – Built with Bootstrap for responsive design  
+- 📊 **User-friendly UI** – Responsive Bootstrap design  
 ---
 
 ## 🛠 Tech Stack
