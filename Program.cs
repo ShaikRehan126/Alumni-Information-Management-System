@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using MyMVCMappingDEMO.Data;
-using MyMVCMappingDEMO;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using MyMVCMappingDEMO.Models;
+using Microsoft.EntityFrameworkCore;
+using MyMVCMappingDEMO;
 using MyMVCMappingDEMO.Areas.Identity.Data;
+using MyMVCMappingDEMO.Data;
+using MyMVCMappingDEMO.Models;
+using NuGet.Packaging;
+using OfficeOpenXml;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,9 +19,12 @@ builder.Services.AddDbContext<MyMVCMappingDEMOContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyMVCMappingDEMOContextConnection")));
 builder.Services.AddDefaultIdentity<MyMVCMappingDEMOUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<MyMVCMappingDEMOContext>();
 
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
 
 
 builder.Services.AddRazorPages();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

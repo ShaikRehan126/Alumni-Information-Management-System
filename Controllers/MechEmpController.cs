@@ -1,10 +1,12 @@
+﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.InkML;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyMVCMappingDEMO.Data;
 using MyMVCMappingDEMO.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Authorization;
-
+using OfficeOpenXml;
 namespace MyMVCMappingDEMO.Controllers
 {
     [Authorize]
@@ -155,16 +157,6 @@ namespace MyMVCMappingDEMO.Controllers
             var employees = from e in _context.MechEmployees
                             select e;
 
-            //if (!string.IsNullOrWhiteSpace(searchString))
-            //{
-            //    employees = employees.Where(e =>
-            //        e.MName.Contains(searchString) ||
-            //        e.MEmail.Contains(searchString) ||
-            //        e.MDepartment.Contains(searchString) ||
-            //        e.MDesignation.Contains(searchString));
-            //}
-
-            //ViewData["CurrentFilter"] = searchString;
             if (!string.IsNullOrWhiteSpace(searchString))
             {
                 if (searchBy == "Name")
@@ -193,5 +185,67 @@ namespace MyMVCMappingDEMO.Controllers
             ViewData["SearchBy"] = searchBy;
             return View(await employees.ToListAsync());
         }
+        [HttpGet]
+        public IActionResult Upload()
+        {
+            return View(new FileUploadViewModel());
+        }
+
+    [HttpPost]
+    public async Task<IActionResult> Upload(FileUploadViewModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            if (model.ExcelFile != null && model.ExcelFile.Length > 0)
+            {
+                using (var stream = new MemoryStream())
+                {
+                    await model.ExcelFile.CopyToAsync(stream);
+                    stream.Position = 0; // reset stream
+
+                    using (var workbook = new XLWorkbook(stream))
+                    {
+                        var worksheet = workbook.Worksheet(1); // first sheet
+                        var rowCount = worksheet.LastRowUsed().RowNumber();
+
+                        var employees = new List<MechEmployee>();
+
+                        for (int row = 2; row <= rowCount; row++) // skip header row
+                        {
+                            var employee = new MechEmployee
+                            {
+                                MRollNo = worksheet.Cell(row, 1).GetString(),
+                                MName = worksheet.Cell(row, 2).GetString(),
+                                MAddress = worksheet.Cell(row, 3).GetString(),
+                                MEmail = worksheet.Cell(row, 4).GetString(),
+                                MPhone = worksheet.Cell(row, 5).GetString(),
+                                MDesignation = worksheet.Cell(row, 6).GetString(),
+                                MDepartment = worksheet.Cell(row, 7).GetString(),
+                                MCompany = worksheet.Cell(row, 8).GetString(),
+                                MYearPassed = worksheet.Cell(row, 9).GetValue<int>(),
+                                MNotes = worksheet.Cell(row, 10).GetString(),
+                                ImagePath = "/images/default.png"
+                            };
+
+                            employees.Add(employee);
+                        }
+
+                        _context.MechEmployees.AddRange(employees);
+                        await _context.SaveChangesAsync();
+
+                        // Pass preview info to view
+                        ViewBag.TotalRows = rowCount;
+                        ViewBag.DataRows = rowCount - 1;
+                        ViewBag.MoreRows = employees.Count > 5 ? employees.Count - 5 : 0;
+
+                        return View("UploadResult", employees.Take(5).ToList());
+                    }
+                }
+            }
+        }
+        return View(model);
+    }
+
+
     }
 }

@@ -10,5 +10,6 @@ namespace MyMVCMappingDEMO.Data
         }
 
         public DbSet<MechEmployee>MechEmployees { get; set; }
+        public DbSet<Event> Events { get; set; }
     }
 }

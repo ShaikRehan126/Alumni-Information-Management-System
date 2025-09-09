@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyMVCMappingDEMO.Data;
 
@@ -11,9 +12,11 @@ using MyMVCMappingDEMO.Data;
 namespace MyMVCMappingDEMO.Migrations
 {
     [DbContext(typeof(MechEmpDbContext))]
-    partial class MechEmpDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250909102818_Event Migration")]
+    partial class EventMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

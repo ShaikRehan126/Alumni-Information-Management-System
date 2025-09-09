@@ -1,0 +1,41 @@
+﻿@model List<MyMVCMappingDEMO.Models.MechEmployee>
+
+<h3>Upload Successful</h3>
+
+<p>Total Rows in Excel (including header): @ViewBag.TotalRows</p>
+<p>Data Rows Imported: @ViewBag.DataRows</p>
+
+@if (Model != null && Model.Any())
+{
+    <h4>Preview (first @Model.Count rows):</h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Year Passed</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in Model)
+            {
+                <tr>
+                    <td>@emp.MRollNo</td>
+                    <td>@emp.MName</td>
+                    <td>@emp.MEmail</td>
+                    <td>@emp.MDepartment</td>
+                    <td>@emp.MYearPassed</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (ViewBag.MoreRows > 0)
+    {
+        <p class="text-muted">... and @ViewBag.MoreRows more rows were imported.</p>
+    }
+}
+
+<a asp-action="Index" class="btn btn-primary">Back to List</a>

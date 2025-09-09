@@ -1,0 +1,10 @@
+﻿@model MyMVCMappingDEMO.Models.FileUploadViewModel
+<form asp-action="Upload" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="ExcelFile"></label>
+        <input asp-for="ExcelFile" type="file" class="form-control" />
+        <span asp-validation-for="ExcelFile" class="text-danger"></span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>

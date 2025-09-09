@@ -4,7 +4,13 @@
 }
 <div class="page-center">
     <div class="card-main" style="max-width: 600px; width: 100%;">
+        <h3 class="card-title-main mb-4">Upload a File</h3>
+        <p class="card-text-main">You can upload a Excel file here. Please ensure the file is in the Excel format. <br /> 
+            <a asp-action="Upload" class="btn btn-primary px-4">Upload Excel Sheet</a>
+         </p>
+        <h3 class="text-secondary text-center"> <strong>OR </strong></h3>
         <h2 class="card-title-main mb-4">Add New Student</h2>
+        <p class="card-text-main mb-4">Please fill in the details below to add a new student.</p>
         <form asp-action="AddEmp" enctype="multipart/form-data" class="needs-validation" novalidate>
             <div class="row">
                 <div class="col-md-6 mb-3">
