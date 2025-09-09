@@ -21,6 +21,7 @@ Supports **role-based access** for Admin and Director users.
 - **Backend**: ASP.NET Core MVC
 - **Database**: SQL Server (EF Core Code-First)
 - **Authentication**: ASP.NET Identity
+- **Email Automation**: Google SMTP(Gmail)
 
 ---
 
