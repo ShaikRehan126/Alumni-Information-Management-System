@@ -10,7 +10,7 @@ The system provides role-based access for **Admin** and **Director** to manage a
 - 🗂 **Alumni Data Management** (Add, Edit, Delete, Search)
 - 📊 **Data Filtering & Sorting**
 - 🗃 **Database Integration** with Entity Framework Core
-
+- 
 ---
 
 ## 🛠 Tech Stack
@@ -25,19 +25,25 @@ The system provides role-based access for **Admin** and **Director** to manage a
 >Login.png
 ><img width="1082" height="801" alt="image" src="https://github.com/user-attachments/assets/f815d4e5-0528-48d4-b555-c1dc5b18dbb2" />
 > Dashboard.png
-> <img width="1892" height="926" alt="image" src="https://github.com/user-attachments/assets/de756062-6ddf-4c67-9839-4b68dc564e84" />
+> <img width="1887" height="910" alt="image" src="https://github.com/user-attachments/assets/0a3a5fe1-e31b-40ff-b4ec-277b0efd3ce6" />
 >View Student
 > <img width="1919" height="923" alt="image" src="https://github.com/user-attachments/assets/2efbbd8b-2e69-4156-8254-27edee8c2057" />
->AddStudent.png
-> <img width="1378" height="925" alt="image" src="https://github.com/user-attachments/assets/5ebe2a9e-4aee-4871-b458-5e38aab579cb" />
+>AddStudents.png
+> <img width="1058" height="926" alt="image" src="https://github.com/user-attachments/assets/98ed19f0-9a77-450c-8f74-5efba20d9d01" />
+>uploadFile.png
+><img width="1891" height="909" alt="image" src="https://github.com/user-attachments/assets/87480548-1d81-4ed1-bcfc-6f0dbcbaf50e" />
+>Successfull Upload
+><img width="1872" height="875" alt="image" src="https://github.com/user-attachments/assets/924dc854-621a-4d5e-a2ce-f318e0f480fa" />
 > Student Detail
 > <img width="1918" height="930" alt="image" src="https://github.com/user-attachments/assets/d1e0f8fc-3691-4d73-b8c6-69ea9aec42ee" />
 >Edit.png
 > <img width="1086" height="926" alt="image" src="https://github.com/user-attachments/assets/318fc667-93e3-41e3-bcab-de9c4b78a1ea" />
 >Delete.png
 > <img width="1865" height="924" alt="image" src="https://github.com/user-attachments/assets/e1969d7b-088a-4719-b3ca-eb7282245295" />
-
-
+>Add Event.png
+><img width="1887" height="910" alt="image" src="https://github.com/user-attachments/assets/65e5bcd9-48cf-4a37-878c-3afddfc84728" />
+>Event Added.png
+><img width="1888" height="906" alt="image" src="https://github.com/user-attachments/assets/8ecff9c4-4968-4bab-941e-1eba8524377d" />
 
 
 
