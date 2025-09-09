@@ -1,16 +1,17 @@
 # 🎓 Alumni Information Management System
 
-A web-based application built with **ASP.NET Core MVC**, **Entity Framework Core**, and **SQL Server** to manage alumni data efficiently.  
-The system provides role-based access for **Admin** and **Director** to manage alumni records, search profiles, and maintain communication.
+A **web-based application** built using **ASP.NET Core MVC**, **Entity Framework Core**, and **SQL Server** to help institutions manage, filter, and communicate alumni data efficiently.  
+
+Supports **role-based access** for Admin and Director users.
 
 ---
 
 ## 🚀 Features
-- 🔐 **Authentication & Authorization** (Only Admin & Director can log in)
-- 🗂 **Alumni Data Management** (Add, Edit, Delete, Search)
-- 📊 **Data Filtering & Sorting**
-- 🗃 **Database Integration** with Entity Framework Core
-- 
+- 🔑 **Authentication & Authorization** – Admin & Director login  
+- 📋 **Alumni Data Management** – Add, edit, delete, search, filter, and sort alumni records  
+- 🗄️ **Database Integration** – Code-first EF Core with SQL Server  
+- 📂 **File Upload Support** – Upload alumni profile pictures/documents  
+- 📊 **User-friendly UI** – Built with Bootstrap for responsive design  
 ---
 
 ## 🛠 Tech Stack
@@ -41,7 +42,7 @@ The system provides role-based access for **Admin** and **Director** to manage a
 >Delete.png
 > <img width="1865" height="924" alt="image" src="https://github.com/user-attachments/assets/e1969d7b-088a-4719-b3ca-eb7282245295" />
 >Add Event.png
-><img width="1887" height="910" alt="image" src="https://github.com/user-attachments/assets/65e5bcd9-48cf-4a37-878c-3afddfc84728" />
+><img width="1899" height="865" alt="image" src="https://github.com/user-attachments/assets/b087f093-7bcf-4cf8-ad2c-05afc1f6d8e8" />
 >Event Added.png
 ><img width="1888" height="906" alt="image" src="https://github.com/user-attachments/assets/8ecff9c4-4968-4bab-941e-1eba8524377d" />
 
@@ -66,6 +67,15 @@ Run the Application
 
     ```bash
         dotnet run
+
+**Future Enhancements**
+
+✅ Alumni Export (Excel/PDF)
+
+✅ Event & Job Posting Module
+
+✅ Attendance Tracking for Reunions
+
 👨‍💻 Author
 Shaik Rehan
 
